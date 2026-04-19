@@ -1,107 +1,93 @@
-# MCP RAG Agent – End-to-End Beginner Guide
+# 🚀 MCP RAG Agent – AI-Powered API Testing Framework
 
-This repository demonstrates a **Modular AI Testing & API Agent System** combining:
-
-* 🔎 RAG (Retrieval Augmented Generation)
-* 🧠 MCP (Model Control/Tool Execution Layer)
-* 🌐 API Testing Agent (Postman-like automation layer)
-
-It is designed to help QA Engineers and Developers build **intelligent API testing systems powered by AI + tools + knowledge retrieval**.
+![Python](https://img.shields.io/badge/Python-3.10+-blue.svg)
+![Flask](https://img.shields.io/badge/Flask-MCP_Server-green.svg)
+![RAG](https://img.shields.io/badge/RAG-Enabled-purple.svg)
+![API Testing](https://img.shields.io/badge/API-Testing-orange.svg)
+![Status](https://img.shields.io/badge/Status-Active-success.svg)
 
 ---
 
-# 📌 1. Project Overview (Simple Explanation)
+## 📌 Overview
 
-Think of this system like 3 layers working together:
+The **MCP RAG Agent** is an AI-driven modular testing framework that combines:
 
-## 🧩 Layer 1: RAG (Knowledge Brain)
+* 🔎 **RAG (Retrieval Augmented Generation)** – Knowledge-based context retrieval
+* ⚙️ **MCP Layer (Tool Execution Engine)** – Executes tools dynamically
+* 🧪 **API Testing Agent** – Automates API validation like Postman
 
-* Stores documents / knowledge
-* Retrieves relevant context for a query
-* Helps AI answer with domain knowledge
-
-👉 Example:
-
-> “What is a SWIFT payment?” → RAG fetches banking knowledge
+It enables **natural language → API execution → validation → intelligent response generation**.
 
 ---
 
-## 🧩 Layer 2: MCP Server (Tool Executor)
+# 🧠 System Architecture
 
-* Acts as a **tool manager / middleware**
-* Exposes tools like:
-
-  * `knowledge_search`
-  * `calculator`
-  * API execution tools
-
-👉 Example:
-
-> AI says: “Call API with payload X” → MCP executes it
-
----
-
-## 🧩 Layer 3: API Agent (Test Engine)
-
-* Reads user input (natural language)
-* Converts into API test steps
-* Executes API calls
-* Validates response
-
-👉 Example:
-
-> “Test login API with valid credentials” → system runs API call + validation
+```mermaid
+graph TD
+A[User Query] --> B[API Agent - NLP Parser]
+B --> C[MCP Server - Tool Router]
+C --> D[RAG Engine - Knowledge Retrieval]
+C --> E[API Execution Tool]
+D --> C
+E --> F[External API / System]
+F --> G[Response Validation Layer]
+G --> H[Final AI Response]
+```
 
 ---
 
-# 🔁 End-to-End Flow (Very Important)
+## 🧩 Architecture Explanation
+
+### 1️⃣ API Agent Layer
+
+* Accepts natural language input
+* Converts request into structured API test case
+
+### 2️⃣ MCP Server Layer
+
+* Central orchestration layer
+* Routes requests to appropriate tools
+
+### 3️⃣ RAG Layer
+
+* Fetches contextual knowledge from documents
+* Enhances API validation logic
+
+### 4️⃣ Execution Layer
+
+* Executes API calls (GET/POST/PUT/DELETE)
+* Captures response payloads
+
+### 5️⃣ Validation Layer
+
+* Compares expected vs actual response
+* Returns structured test result
+
+---
+
+# 🔁 End-to-End Flow
 
 ```
-User Query
+User Input
    ↓
-API Agent (understands intent)
+API Agent (Intent Detection)
    ↓
-MCP Server (chooses tools)
+MCP Server (Tool Selection)
    ↓
-RAG (fetches knowledge if needed)
+RAG (Context Injection)
    ↓
-API Execution Layer (requests sent)
+API Execution Engine
    ↓
 Response Validation
    ↓
-Final Output to User
+Final Result Output
 ```
 
 ---
 
-# 🧰 2. Project Structure (Expected)
+# ⚙️ Installation Guide
 
-```
-MCP_RAG_AGENT/
-│
-├── qa_agent/
-│   ├── api_agent_runner.py
-│   ├── mcp_client.py
-│
-├── tools/
-│   ├── rag_tool.py
-│   ├── calculator_tool.py
-│
-├── server/
-│   ├── mcp_server.py
-│
-├── data/
-│   ├── documents/
-│
-├── requirements.txt
-└── README.md
-```
-
----
-
-# ⚙️ 3. Installation Steps
-
-## ✅ Step 1: Clone Repository
+## 1️⃣ Clone Repository
 
 ```bash
 git clone https://github.com/karthikeyanramu/MCP_RAG_AGENT.git
@@ -110,7 +96,7 @@ cd MCP_RAG_AGENT
 
 ---
 
-## ✅ Step 2: Create Virtual Environment
+## 2️⃣ Create Virtual Environment
 
 ```bash
 python -m venv venv
@@ -118,54 +104,39 @@ python -m venv venv
 
 Activate:
 
-### Windows:
-
 ```bash
+# Windows
 venv\Scripts\activate
-```
 
-### Mac/Linux:
-
-```bash
+# Mac/Linux
 source venv/bin/activate
 ```
 
 ---
 
-## ✅ Step 3: Install Dependencies
+## 3️⃣ Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-If requirements missing:
-
-```bash
-pip install flask requests numpy pandas
-```
-
 ---
 
-# 🚀 4. Running the System (Step-by-Step)
-
-## 🔹 Step 1: Start MCP Server
+## 4️⃣ Start MCP Server
 
 ```bash
 python server/mcp_server.py
 ```
 
-Expected output:
+Expected:
 
 ```
 MCP Server running on http://localhost:5000
-Tools loaded: knowledge_search, calculator
 ```
 
 ---
 
-## 🔹 Step 2: Run API Agent
-
-Open a NEW terminal:
+## 5️⃣ Run API Agent
 
 ```bash
 python -m qa_agent.api_agent_runner
@@ -173,163 +144,144 @@ python -m qa_agent.api_agent_runner
 
 ---
 
-## 🔹 Step 3: Send Query
+# 🧪 Postman Integration (Manual Testing Support)
 
-Inside runner:
+Even though this system is AI-driven, it supports Postman-style API testing.
 
-```text
-Test login API with valid credentials
-```
+## 📌 Example Request
 
-OR
-
-```text
-What is SWIFT payment and validate API response format
-```
-
----
-
-# 🧠 5. How Each Layer Works Internally
-
----
-
-## 🔎 RAG Layer (rag_tool.py)
-
-### Responsibilities:
-
-* Load documents
-* Convert to embeddings (if implemented)
-* Retrieve relevant chunks
-
-### Flow:
+### 🔹 Endpoint
 
 ```
-User Query → Search Documents → Return Context
+POST http://localhost:5000/execute
 ```
 
----
+### 🔹 Headers
 
-## ⚙️ MCP Server Layer
-
-### Responsibilities:
-
-* Expose tools via API
-* Accept execution requests
-* Route to correct tool
-
-### Example endpoints:
-
-```
-POST /execute
-GET /tools
+```json
+{
+  "Content-Type": "application/json",
+  "Authorization": "Bearer <token-if-needed>"
+}
 ```
 
----
+### 🔹 Sample Payload
 
-## 🧪 API Agent Layer
-
-### Responsibilities:
-
-* Parse natural language
-* Build API request
-* Call MCP tools
-* Validate response
-
-### Example:
-
-```python
-request = {
+```json
+{
+  "tool": "api_executor",
   "method": "POST",
-  "url": "/login",
-  "body": {...}
+  "url": "https://api.example.com/login",
+  "headers": {
+    "Content-Type": "application/json"
+  },
+  "body": {
+    "username": "test_user",
+    "password": "Test@123"
+  }
 }
 ```
 
 ---
 
-# 🔄 6. Example Execution Flow
+## 📌 Sample Response
 
-## Input:
-
-```
-Test user login API with valid credentials
-```
-
-## System Processing:
-
-1. API Agent detects intent → "Login API test"
-2. MCP decides tool → API execution tool
-3. RAG provides context → login payload structure
-4. API call executed
-5. Response validated
-
----
-
-## Output:
-
-```
-STATUS: 200 OK
-LOGIN SUCCESS
-Response validated successfully
+```json
+{
+  "status": 200,
+  "message": "Login Successful",
+  "token": "eyJhbGciOiJIUzI1NiIs...",
+  "validation": "PASSED"
+}
 ```
 
 ---
 
-# 🧪 7. Available Tools
+# 🔄 CI/CD Pipeline (QA Maturity Model)
 
-## 🔹 knowledge_search
+This system can be integrated into CI/CD pipelines for **automated API validation**.
 
-* Searches documents
+## 🚀 Pipeline Flow
 
-## 🔹 calculator
-
-* Performs calculations
-
-## 🔹 API Executor (custom)
-
-* Sends HTTP requests
-
----
-
-# 🛠️ 8. Common Commands
-
-## Run server
-
-```bash
-python server/mcp_server.py
-```
-
-## Run agent
-
-```bash
-python -m qa_agent.api_agent_runner
-```
-
-## Install dependencies
-
-```bash
-pip install -r requirements.txt
+```mermaid
+graph LR
+A[Code Push] --> B[CI Trigger - GitHub Actions]
+B --> C[Install Dependencies]
+C --> D[Run API Tests via MCP Agent]
+D --> E[RAG Validation Layer]
+E --> F[Test Report Generation]
+F --> G[Deploy / Fail Pipeline]
 ```
 
 ---
 
-# ⚠️ 9. Common Issues
+## 🧪 CI/CD Benefits
 
-## ❌ Port already in use
+✔ Automated API regression testing
+✔ AI-driven validation (reduces manual QA effort)
+✔ Early defect detection
+✔ Domain knowledge injection via RAG
+✔ Scalable test execution
+
+---
+
+## 📌 Sample GitHub Actions Workflow
+
+```yaml
+name: MCP API Tests
+
+on: [push]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: 3.10
+
+      - name: Install dependencies
+        run: pip install -r requirements.txt
+
+      - name: Run MCP API Agent
+        run: python -m qa_agent.api_agent_runner
+```
+
+---
+
+# 🧰 Available Tools
+
+| Tool             | Purpose                      |
+| ---------------- | ---------------------------- |
+| knowledge_search | RAG-based document retrieval |
+| calculator       | Arithmetic operations        |
+| api_executor     | Executes HTTP requests       |
+
+---
+
+# 📊 Real-World Use Cases
+
+* Banking API automation (AML / KYC)
+* Collateral management system testing
+* Microservices regression testing
+* AI-driven QA automation frameworks
+
+---
+
+# ⚠️ Troubleshooting
+
+## ❌ Port conflict
 
 ```bash
 netstat -ano | findstr :5000
-```
-
-Kill process:
-
-```bash
 taskkill /PID <pid> /F
 ```
 
----
-
-## ❌ Module not found
+## ❌ Module error
 
 ```bash
 pip install -r requirements.txt
@@ -337,30 +289,22 @@ pip install -r requirements.txt
 
 ---
 
-# 🎯 10. Real-World Use Cases
-
-* API Test Automation using AI
-* Banking domain API validation
-* AML / KYC system testing
-* Smart QA Agent for regression testing
-
----
-
-# 🚀 11. Future Enhancements
+# 🚀 Future Enhancements
 
 * OpenAI / LLM integration
-* Postman collection import
-* UI dashboard
-* CI/CD pipeline integration
-* Advanced RAG embeddings
+* UI dashboard for test execution
+* Kubernetes deployment
+* Advanced embedding-based RAG
+* Postman collection auto-import
 
 ---
 
-# 👨‍💻 12. Summary
+# 👨‍💻 Summary
 
 This project demonstrates:
 
 ✔ AI-powered API testing
-✔ Modular tool execution (MCP)
-✔ Knowledge-driven responses (RAG)
-✔ Real-world QA automation framework
+✔ MCP-based tool orchestration
+✔ RAG-enhanced validation
+✔ Enterprise-grade QA automation architecture
+
