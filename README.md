@@ -364,12 +364,3 @@ This project demonstrates:
 ✔ Modular tool execution (MCP)
 ✔ Knowledge-driven responses (RAG)
 ✔ Real-world QA automation framework
-
----
-
-If you want, I can also:
-
-* Draw architecture diagram (visual)
-* Convert this into GitHub README.md format
-* Add L1B visa explanation version
-* Add interview explanation script
