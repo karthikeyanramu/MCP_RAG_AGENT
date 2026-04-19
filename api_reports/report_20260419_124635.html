@@ -1,0 +1,101 @@
+
+    <html>
+    <head>
+        <title>API QA Report</title>
+
+        <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+        <style>
+            body {
+                font-family: Arial;
+                padding: 15px;
+                font-size: 14px;
+            }
+
+            .box {
+                display: flex;
+                gap: 10px;
+                margin-bottom: 15px;
+            }
+
+            .card {
+                padding: 8px;
+                border-radius: 6px;
+                color: white;
+                width: 120px;
+                text-align: center;
+                font-size: 13px;
+            }
+
+            .total { background: #3498db; }
+            .pass { background: #2ecc71; }
+            .fail { background: #e74c3c; }
+
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 10px;
+                font-size: 13px;
+            }
+
+            th, td {
+                border: 1px solid #ddd;
+                padding: 6px;
+            }
+
+            th {
+                background: #333;
+                color: white;
+            }
+
+            canvas {
+                max-width: 220px !important;
+                max-height: 220px !important;
+                margin: auto;
+                display: block;
+            }
+        </style>
+    </head>
+
+    <body>
+
+    <h2>API QA Report</h2>
+
+    <div class="box">
+        <div class="card total">Total<br>10</div>
+        <div class="card pass">Passed<br>2</div>
+        <div class="card fail">Failed<br>8</div>
+    </div>
+
+    <canvas id="pieChart"></canvas>
+
+    <h3>Executed APIs</h3>
+
+    <table>
+        <tr>
+            <th>API</th>
+            <th>Status</th>
+            <th>Code</th>
+            <th>Message</th>
+        </tr>
+
+        <tr><td>list users</td><td>FAIL</td><td>404</td><td>Unexpected status code: 404</td></tr><tr><td>get user</td><td>FAIL</td><td>404</td><td>Unexpected status code: 404</td></tr><tr><td>create user</td><td>PASS</td><td>201</td><td>Valid response (201)</td></tr><tr><td>delete user</td><td>FAIL</td><td>404</td><td>Unexpected status code: 404</td></tr><tr><td></td><td>FAIL</td><td>404</td><td>Unexpected status code: 404</td></tr><tr><td>create user</td><td>PASS</td><td>201</td><td>Valid response (201)</td></tr><tr><td>create 5 users</td><td>FAIL</td><td>404</td><td>Unexpected status code: 404</td></tr><tr><td>update the user name with any ntimeout=3random name</td><td>FAIL</td><td>404</td><td>Unexpected status code: 404</td></tr><tr><td>update the user name with any random name</td><td>FAIL</td><td>404</td><td>Unexpected status code: 404</td></tr><tr><td>get the user</td><td>FAIL</td><td>404</td><td>Unexpected status code: 404</td></tr>
+
+    </table>
+
+    <script>
+        new Chart(document.getElementById('pieChart'), {
+            type: 'pie',
+            data: {
+                labels: ['PASS', 'FAIL'],
+                datasets: [{
+                    data: [2, 8],
+                    backgroundColor: ['#2ecc71', '#e74c3c']
+                }]
+            }
+        });
+    </script>
+
+    </body>
+    </html>
+    

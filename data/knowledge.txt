@@ -1,0 +1,8 @@
+MCP stands for Model Context Protocol.
+It is used to standardize how AI models interact with external tools.
+
+RAG stands for Retrieval Augmented Generation.
+It helps AI fetch relevant data before answering.
+
+Agents are AI systems that can take decisions and use tools.
+They can perform multi-step reasoning.

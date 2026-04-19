@@ -1,0 +1,178 @@
+
+    <html>
+    <head>
+      <meta charset="utf-8">
+      <title>API QA Report</title>
+      <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+      <style>
+        :root { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Arial; color-scheme: light; }
+        body { margin: 20px; color: #222; }
+        header { display:flex; justify-content:space-between; align-items:center; gap:20px; }
+        h1 { margin: 0; font-size: 20px; }
+        .meta { color: #666; font-size: 13px; }
+        .summary { display:flex; gap:12px; margin-top:12px; }
+        .card { padding:10px 14px; border-radius:8px; background:#f5f7fb; min-width:110px; text-align:center; }
+        .card strong { display:block; font-size:18px; color:#111; }
+        table { width:100%; border-collapse:collapse; margin-top:18px; font-size:13px; }
+        th, td { padding:8px 10px; border:1px solid #e6e9ef; text-align:left; vertical-align:top; }
+        th { background:#0f1724; color:white; font-weight:600; }
+        .small { font-size:12px; color:#555; }
+        pre { white-space:pre-wrap; word-wrap:break-word; font-family:monospace; font-size:12px; background:#fafafa; padding:8px; border-radius:6px; border:1px solid #eee; }
+      </style>
+    </head>
+    <body>
+      <header>
+        <div>
+          <h1>API QA Report</h1>
+          <div class="meta">Generated: 2026-04-19T12:58:30</div>
+        </div>
+        <div style="width:220px;">
+          <canvas id="pieChart"></canvas>
+        </div>
+      </header>
+
+      <div class="summary">
+        <div class="card"><span class="small">Total</span><strong>5</strong></div>
+        <div class="card"><span class="small">Passed</span><strong style="color:#16a34a">4</strong></div>
+        <div class="card"><span class="small">Failed</span><strong style="color:#dc2626">1</strong></div>
+      </div>
+
+      <h3 style="margin-top:20px">Executed APIs</h3>
+      <table>
+        <tr><th>API</th><th>Method</th><th>Status</th><th>Code</th><th>Message</th></tr>
+        <tr><td>get user 2</td><td>GET</td><td>PASS</td><td>200</td><td>Valid response (200)</td></tr><tr><td>list users page</td><td>GET</td><td>FAIL</td><td>404</td><td>Unexpected status code: 404</td></tr><tr><td>list users page 2</td><td>GET</td><td>PASS</td><td>200</td><td>Valid response (200)</td></tr><tr><td>update user 3</td><td>PUT</td><td>PASS</td><td>200</td><td>Valid response (200)</td></tr><tr><td>patch user 3</td><td>PATCH</td><td>PASS</td><td>200</td><td>Valid response (200)</td></tr>
+      </table>
+
+      <h3 style="margin-top:20px">Details</h3>
+      <section style='margin-bottom:14px'><h4 style='margin:2px 0'>get user 2 <small class='small'>(GET)</small></h4><div class='small'>Endpoint: https://reqres.in/api/users/2</div><div style='margin-top:6px'><pre>{
+  "data": {
+    "id": 2,
+    "email": "janet.weaver@reqres.in",
+    "first_name": "Janet",
+    "last_name": "Weaver",
+    "avatar": "https://reqres.in/img/faces/2-image.jpg"
+  },
+  "support": {
+    "url": "https://benhowdle.im/first-cto-playbook?utm_source=reqres&utm_medium=json&utm_campaign=referral",
+    "text": "Become a better CTO. A playbook of painful stories and practical advice from a two-time startup CTO."
+  },
+  "_meta": {
+    "powered_by": "ReqRes",
+    "docs_url": "https://app.reqres.in/documentation",
+    "upgrade_url": "https://app.reqres.in/upgrade",
+    "example_url": "https://app.reqres.in/examples/notes-app",
+    "variant": "v1_a",
+    "message": "Your data persists here. Add auth, logs, and custom schemas to build a real backend.",
+    "cta": {
+      "label": "See example app",
+      "url": "https://app.reqres.in/examples/notes-app"
+    },
+    "context": "legacy_success"
+  }
+}</pre></div></section><section style='margin-bottom:14px'><h4 style='margin:2px 0'>list users page <small class='small'>(GET)</small></h4><div class='small'>Endpoint: https://reqres.in/api/unknown/999</div><div style='margin-top:6px'><pre>{}</pre></div></section><section style='margin-bottom:14px'><h4 style='margin:2px 0'>list users page 2 <small class='small'>(GET)</small></h4><div class='small'>Endpoint: https://reqres.in/api/users?page=2</div><div style='margin-top:6px'><pre>{
+  "page": 2,
+  "per_page": 6,
+  "total": 12,
+  "total_pages": 2,
+  "data": [
+    {
+      "id": 7,
+      "email": "michael.lawson@reqres.in",
+      "first_name": "Michael",
+      "last_name": "Lawson",
+      "avatar": "https://reqres.in/img/faces/7-image.jpg"
+    },
+    {
+      "id": 8,
+      "email": "lindsay.ferguson@reqres.in",
+      "first_name": "Lindsay",
+      "last_name": "Ferguson",
+      "avatar": "https://reqres.in/img/faces/8-image.jpg"
+    },
+    {
+      "id": 9,
+      "email": "tobias.funke@reqres.in",
+      "first_name": "Tobias",
+      "last_name": "Funke",
+      "avatar": "https://reqres.in/img/faces/9-image.jpg"
+    },
+    {
+      "id": 10,
+      "email": "byron.fields@reqres.in",
+      "first_name": "Byron",
+      "last_name": "Fields",
+      "avatar": "https://reqres.in/img/faces/10-image.jpg"
+    },
+    {
+      "id": 11,
+      "email": "george.edwards@reqres.in",
+      "first_name": "George",
+      "last_name": "Edwards",
+      "avatar": "https://reqres.in/img/faces/11-image.jpg"
+    },
+    {
+      "id": 12,
+      "email": "rachel.howell@reqres.in",
+      "first_name": "Rachel",
+      "last_name": "Howell",
+      "avatar": "https://reqres.in/img/faces/12-image.jpg"
+    }
+  ],
+  "support": {
+    "url": "https://benhowdle.im/first-cto-playbook?utm_source=reqres&utm_medium=json&utm_campaign=referral",
+    "text": "Become a better CTO. A playbook of painful stories and practical advice from a two-time startup CTO."
+  },
+  "_meta": {
+    "powered_by": "ReqRes",
+    "docs_url": "https://app.reqres.in/documentation",
+    "upgrade_url": "https://app.reqres.in/upgrade",
+    "example_url": "https://app.reqres.in/examples/notes-app",
+    "variant": "v1_a",
+    "message": "Your data persists here. Add auth, logs, and custom schemas to build a real backend.",
+    "cta": {
+      "label": "See example app",
+      "url": "https://app.reqres.in/examples/notes-app"
+    },
+    "context": "legacy_success"
+  }
+}</pre></div></section><section style='margin-bottom:14px'><h4 style='margin:2px 0'>update user 3 <small class='small'>(PUT)</small></h4><div class='small'>Endpoint: https://reqres.in/api/users/3</div><div style='margin-top:6px'><pre>{
+  "name": "updated",
+  "job": "lead qa",
+  "updatedAt": "2026-04-19T07:28:20.186Z",
+  "_meta": {
+    "powered_by": "ReqRes",
+    "docs_url": "https://app.reqres.in/documentation",
+    "upgrade_url": "https://app.reqres.in/upgrade",
+    "example_url": "https://app.reqres.in/examples/notes-app",
+    "variant": "v1_a",
+    "message": "Your data persists here. Add auth, logs, and custom schemas to build a real backend.",
+    "cta": {
+      "label": "See example app",
+      "url": "https://app.reqres.in/examples/notes-app"
+    },
+    "context": "legacy_success"
+  }
+}</pre></div></section><section style='margin-bottom:14px'><h4 style='margin:2px 0'>patch user 3 <small class='small'>(PATCH)</small></h4><div class='small'>Endpoint: https://reqres.in/api/users/3</div><div style='margin-top:6px'><pre>{
+  "job": "patched qa",
+  "updatedAt": "2026-04-19T07:28:29.403Z",
+  "_meta": {
+    "powered_by": "ReqRes",
+    "docs_url": "https://app.reqres.in/documentation",
+    "upgrade_url": "https://app.reqres.in/upgrade",
+    "example_url": "https://app.reqres.in/examples/notes-app",
+    "variant": "v1_a",
+    "message": "Your data persists here. Add auth, logs, and custom schemas to build a real backend.",
+    "cta": {
+      "label": "See example app",
+      "url": "https://app.reqres.in/examples/notes-app"
+    },
+    "context": "legacy_success"
+  }
+}</pre></div></section>
+
+      <script>
+        new Chart(document.getElementById('pieChart'), { type:'pie', data: { labels:['PASS','FAIL'], datasets:[{ data:[4,1], backgroundColor:['#16a34a','#dc2626'] }] } });
+      </script>
+    </body>
+    </html>
+    

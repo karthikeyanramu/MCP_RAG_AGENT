@@ -1,0 +1,22 @@
+{
+  "tools": [
+    {
+      "name": "knowledge_search",
+      "description": "Searches internal knowledge base and returns relevant information",
+      "when_to_use": "Use for conceptual questions, definitions, QA topics, API testing, banking domain, etc.",
+      "input_format": {
+        "query": "string"
+      },
+      "output": "Relevant text from knowledge base"
+    },
+    {
+      "name": "calculator",
+      "description": "Performs mathematical calculations",
+      "when_to_use": "Use only for math operations like addition, multiplication, etc.",
+      "input_format": {
+        "expression": "string"
+      },
+      "output": "Calculated result as string"
+    }
+  ]
+}
