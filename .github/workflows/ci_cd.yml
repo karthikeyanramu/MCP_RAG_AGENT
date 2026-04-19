@@ -8,6 +8,9 @@ on:
 
 jobs:
 
+  # =========================
+  # CI PIPELINE (TESTING)
+  # =========================
   ci_pipeline:
     runs-on: ubuntu-latest
 
@@ -20,20 +23,24 @@ jobs:
       uses: actions/setup-python@v5
       with:
         python-version: "3.11"
+        cache: "pip"   # 🔥 speed improvement
 
     - name: Install dependencies
       run: |
         python -m pip install --upgrade pip
         pip install -r requirements.txt
 
-    - name: Basic import check
+    - name: Basic environment check
       run: |
-        python -c "import sys; print('Python OK:', sys.version)"
+        python -c "import sys; print('Python Version:', sys.version)"
 
-    - name: Run smoke tests
+    - name: Run pytest (strict mode)
       run: |
-        pytest tests/ || echo "No tests found or failing tests"
+        pytest tests/ -v --disable-warnings --maxfail=1
 
+  # =========================
+  # CD PIPELINE (BUILD + RUN)
+  # =========================
   cd_pipeline:
     needs: ci_pipeline
     runs-on: ubuntu-latest
@@ -44,16 +51,25 @@ jobs:
     - name: Checkout code
       uses: actions/checkout@v4
 
+    - name: Setup Docker Build
+      uses: docker/setup-buildx-action@v3
+
     - name: Build Docker image
       run: |
         docker build -t mcp-api-agent:latest .
 
-    - name: Run container (basic verification)
+    - name: Run container (health check)
       run: |
-        docker run -d -p 5000:5000 mcp-api-agent:latest
+        docker run -d -p 5000:5000 --name mcp_test mcp-api-agent:latest
         sleep 5
         docker ps
+        docker logs mcp_test
 
-    - name: Clean environment check
+    - name: Stop container
       run: |
-        python -c "import sys; print('Runtime check OK:', sys.executable)"
+        docker stop mcp_test
+        docker rm mcp_test
+
+    - name: Final runtime validation
+      run: |
+        python -c "print('CD pipeline completed successfully')"
